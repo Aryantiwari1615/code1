@@ -1,0 +1,24 @@
+pragma solidity 0.8.26;
+
+
+contract MyToken {
+
+    // public variables here
+    string public Token_Name = "ABC";
+    string public Token_Abbrv = "AB";
+    uint public Total_Supply = 0;
+    // mapping variable here
+    mapping(address => uint) public Balance;
+    // mint function
+    function Mint(address _address,uint _number) public {
+    Total_Supply+= _number;
+    Balance[_address]+= _number;
+    }
+    // burn function
+    function Burn(address _address,uint _number) public {
+    if(Balance[_address] >= _number){
+    Total_Supply-= _number;
+    Balance[_address]-= _number;
+    }
+    }
+}
